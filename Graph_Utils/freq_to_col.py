@@ -2,9 +2,11 @@ from conversion import *
 import re
 
 # Used for my poster
-bg_col = srgb_to_okhsl(18, 21, 31) # dark dark blue
-fg_col = srgb_to_okhsl(29, 200, 255) # blue
+bg_col = srgb_to_okhsl(18, 21, 31) # poster dark dark blue
+fg_col = srgb_to_okhsl(29, 200, 255) # poster blue
 fg_col = srgb_to_okhsl(255, 0, 64) # red
+fg_col = srgb_to_okhsl(0, 170, 0) # green
+fg_col = srgb_to_okhsl(24, 123, 255) # blue
 bg_col = srgb_to_okhsl(255, 255, 255)
 
 
