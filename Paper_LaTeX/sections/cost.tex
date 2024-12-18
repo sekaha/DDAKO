@@ -1,0 +1,33 @@
+\subsection{Creating the Objective Function}
+The objective function we are optimizing for is the predicted time to type a corpus on a specific layout in a given WPM range. This prediction is achieved by evaluating the cost, or typing time, of each trigram within the corpus, multiplying it by the trigram's occurrence count, and summing the results, yielding the estimated time required to type the corpus on that particular layout.
+
+The limited diversity of layouts in the dataset makes developing an accurate time prediction model challenging, as it has the potential to introduce significant bias. The averaging of typing times further reduces the effective sample size, amplifying the risk of overfitting to the specific nuances of these layouts. To mitigate this risk, a cost function is devised based on insights from our data analysis, and the number of adjustable parameters within the cost function is minimized. The adjustable parameters are later fine-tuned using the Levenberg-Marquardt algorithm. This approach, in contrast to more complex techniques such as neural networks, helps prevent overfitting by retaining only the most salient relationships observed in the data. 
+
+% to enhance the model's efficacy for layouts not present in the training data
+
+% Calculation of the tristroke cost function relies on a bistroke cost function. 
+
+Calculation of the tristroke cost function relies on first calculating the cost of its constituent bistrokes. So we first define the bistroke cost function, $C(b)$, as the predicted time required to type a given bistroke $b$ of category $i$, with base positional penalties $P_x$ and $P_y$, categorical positional penalties $P^{(i)}_x$ and $P^{(i)}_y$, and a frequency penalty $f(b)$. The frequency penalty is modeled using a logarithmic function with free parameters $p_1$, $p_2$, and $p_3$. The columnar penalties, $P_x$ and $P^{(i)}_x$, are calculated based on the absolute value of the x-coordinate for the second keystroke in the bistroke. Taking the absolute value is done to limit any potential hand bias that could stem from adaptive behaviors to an uneven workload. A free parameter is assigned to each possible column value to weight its influence on typing speed. % = \{ 1,2,3 \}
+
+The row penalties, $P_y$ and $P^{(i)}_y$, are calculated based on the y-coordinate of the second key in the bistroke. Each possible y-coordinate is assigned a free parameter to weight its effect on typing speed. It is assumed that a row-staggered keyboard is used, as it is the most common layout. On a row-staggered keyboard, the top row has a $-0.25$ key offset, and the bottom row has a $0.5$ key offset. This offset must be accounted for in the single-finger bistroke's distance calculation, so $\Delta$ is introduced to represent the row-stagger-adjusted distance between keys. For any other bistroke, $\Delta$ is set to $0$. A free parameter, $p_4$, is added to $\Delta$ to establish a baseline penalty weight. This parameter determines the extent to which distance contributes to the penalty on top of the row-stagger adjustment and also prevents $\Delta$ from becoming zero, which would negate the placement penalties. The bistroke cost function, $C(b)$, is calculated as the product of the finger penalties and the frequency logarithm.
+\begin{equation*}
+    \begin{split}
+        C(b) &= \left(p_1 \log (f(b) + p_2) + p_3\right) \\
+             &\quad \times \left(1 + P_x(b) P_y(b) + P^{(i)}_x(b) P^{(i)}_y(b) (\Delta + p_4) \right)  
+    \end{split}
+\end{equation*}
+
+\noindent For the tristroke cost function $C(t)$, we take the sum of the cost of its constituent bistrokes $b_1(t)$ and $b_2(t)$, then add a small penalty for the trigram's associated skipstroke $s(t)$, if it is a single-finger skipstroke. The single-finger skipstroke penalty, like the single-finger bistroke penalty, considers positional penalties $P_x$ and $P_y$, as well as a distance penalty $(\Delta + p_5)$ with a free parameter $p_5$. It should be noted that the single-finger skipstroke penalty defaults to $0$ if there is no single-finger skipstroke.  %, which defaults to $0$ if the trigram is not a single-finger skipstroke.
+\begin{equation*}
+C(t) = C(b_1(t)) + C(b_2(t)) + P_x(s(t))  P_y(s(t)) (\Delta + p_5)
+\end{equation*}
+
+\noindent Finally, the data is limited to the desired WPM range. The bistroke cost function is then fit to the bistroke data, and the tristroke cost function is fit to the tristroke data, using the Levenberg-Marquardt algorithm. The MAE of the fit changes depending on the target WPM, but the $R^2$ metric remains constant. For $80$ WPM, this results in $C(b)$ having an MAE of $12$ milliseconds and an $R^2$ of $0.78$. $C(t)$ is less accurate with an MAE of $26$ milliseconds and an $R^2$ of $0.42$. The cumulative cost $C(l)$ for a layout $l$ is the sum of each tristroke's predicted typing time multiplied by its number of occurrences, effectively estimating the typing time for a given layout across the corpus.
+\begin{equation*}
+C(l) = \sum_{t \in T} (C(t) \times f(t) )
+\end{equation*}
+
+\noindent This is the objective function passed onto the simulated annealing algorithm for optimization.
+
+%which is what the simulated annealing algorithm optimizes for, is 
+
