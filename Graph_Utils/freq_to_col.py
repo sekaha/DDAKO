@@ -2,12 +2,12 @@ from conversion import *
 import re
 
 # Used for my poster
-bg_col = srgb_to_okhsl(18, 21, 31) # poster dark dark blue
-fg_col = srgb_to_okhsl(29, 200, 255) # poster blue
-fg_col = srgb_to_okhsl(255, 0, 64) # red
-fg_col = srgb_to_okhsl(0, 170, 0) # green
-fg_col = srgb_to_okhsl(24, 123, 255) # blue
-bg_col = srgb_to_okhsl(255, 255, 255)
+bg_col = linear_srgb_to_oklab(18, 21, 31) # poster dark dark blue
+fg_col = linear_srgb_to_oklab(29, 200, 255) # poster blue
+fg_col = linear_srgb_to_oklab(255, 0, 64) # red
+# fg_col = linear_srgb_to_oklab(0, 170, 0) # green
+# fg_col = linear_srgb_to_oklab(24, 123, 255) # blue
+bg_col = linear_srgb_to_oklab(255, 255, 255)
 
 
 table = """\cellcolor[HTML]{24314b}\\textbf{M} & \cellcolor[HTML]{316799}\\textbf{R} & \cellcolor[HTML]{3091ca}\\textbf{T} & \cellcolor[HTML]{283a59}\\textbf{C} & \cellcolor[HTML]{20293f}\\textbf{W} & \cellcolor[HTML]{1b2131}\\textbf{,} & \cellcolor[HTML]{181e2c}\\textbf{K} & \cellcolor[HTML]{3183ba}\\textbf{A} & \cellcolor[HTML]{1dc8ff}\\textbf{E} & \cellcolor[HTML]{131722}\\textbf{'} \\\\ \hline
@@ -54,7 +54,7 @@ def get_col(freq):
     lerp = lambda a, b, t : a + (b-a) * t
     t = (freq-low_f)/(high_f-low_f)
 
-    return rgb_to_hex(*okhsl_to_srgb(*(lerp(a, b, t) for a, b in zip(bg_col, fg_col))))
+    return rgb_to_hex(*oklab_to_linear_srgb(*(lerp(a, b, t) for a, b in zip(bg_col, fg_col))))
 
 #for char, freq in freqs.items():
 #    print(char, rgb_to_hex(*(int(v) for v in get_col(freq)))[1:])

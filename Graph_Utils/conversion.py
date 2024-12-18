@@ -390,7 +390,7 @@ def hex_to_rgb(hex):
 
 def rgb_to_hex(r, g, b):
     def component_to_hex(x):
-        hex = round(x).to_bytes(1, 'big').hex()
+        hex = (max(0,min(255,round(x)))).to_bytes(1, 'big').hex()
         return hex if len(hex) == 2 else '0' + hex
 
     return f"#{component_to_hex(r)}{component_to_hex(g)}{component_to_hex(b)}"
