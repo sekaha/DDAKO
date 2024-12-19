@@ -72,3 +72,10 @@ for r in table.split("\n"):
     ]
 
     print("&".join(cells))
+
+s = ""
+for c, f in freqs.items():
+    s += c*int(f*100)
+
+with open("out", "w") as f:
+    f.write(s)
