@@ -2,11 +2,11 @@ from conversion import *
 import re
 
 # Used for my poster
-bg_col = linear_srgb_to_oklab(18, 21, 31) # poster dark dark blue
-fg_col = linear_srgb_to_oklab(29, 200, 255) # poster blue
-fg_col = linear_srgb_to_oklab(255, 0, 64) # red
+#bg_col = linear_srgb_to_oklab(18, 21, 31) # poster dark dark blue
+#fg_col = linear_srgb_to_oklab(29, 200, 255) # poster blue
+# fg_col = linear_srgb_to_oklab(255, 0, 64) # red
 # fg_col = linear_srgb_to_oklab(0, 170, 0) # green
-# fg_col = linear_srgb_to_oklab(24, 123, 255) # blue
+fg_col = linear_srgb_to_oklab(24, 123, 255) # blue
 bg_col = linear_srgb_to_oklab(255, 255, 255)
 
 
