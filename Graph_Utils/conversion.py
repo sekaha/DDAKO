@@ -1,5 +1,8 @@
 import math
 
+def clamp(v, low=0, high=255):
+    return v
+
 def srgb_transfer_function(a):
     return 12.92 * a if a <= 0.0031308 else 1.055 * math.pow(a, 1 / 2.4) - 0.055
 
@@ -31,9 +34,9 @@ def oklab_to_linear_srgb(L, a, b):
     s = s_ ** 3
 
     return [
-        4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
-        -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
-        -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s,
+        clamp(4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s),
+        clamp(-1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s),
+        clamp(-0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s),
     ]
 
 def toe(x):
@@ -394,6 +397,10 @@ def rgb_to_hex(r, g, b):
         return hex if len(hex) == 2 else '0' + hex
 
     return f"#{component_to_hex(r)}{component_to_hex(g)}{component_to_hex(b)}"
+
+def merge(col1,col2,amount):
+    lerp = lambda a, b, t : a + (b-a) * t
+    return [lerp(a, b, amount) for a, b in zip(col1, col2)]
 
 # Test
 # conv = srgb_to_okhsl(255,128,64)
