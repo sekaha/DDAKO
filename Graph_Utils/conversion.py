@@ -225,9 +225,9 @@ def get_Cs(L, a_, b_):
 
 
 def okhsl_to_srgb(h, s, l):
-    if l == 1:
+    if l >= 1:
         return [255, 255, 255]
-    elif l == 0:
+    elif l <= 0:
         return [0, 0, 0]
 
     a_ = math.cos(2 * math.pi * h)
