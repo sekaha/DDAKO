@@ -8,6 +8,11 @@ high_h, high_s, high_l = srgb_to_okhsl(252, 231, 44)
 high_col = (high_h, high_s, high_l*0.97)
 low_col = srgb_to_okhsl(67, 13, 85)
 
+lower_chars = {c1 : c2 for c1, c2 in zip("ETAOINSRHLDCUMFGPYWBVLXJZQ:\"_<>?", "etaoinsrhldcumfgpywbvkxjzq;'-,./")}
+
+def lower(s):
+    return "".join([lower_chars[c] if c in lower_chars else c for c in s])
+
 chars = "etaoinsrhldcumfgpywbvkxjzq;'-,./"
 
 # get bigram freqs
@@ -16,7 +21,9 @@ bigram_freqs = defaultdict(int)
 with open('bigrams.txt') as f:
     for l in f:
         bigram, freq = l.split('\t')
-        bigram = bigram.lower()
+        bigram = lower(bigram)
+
+        print(bigram)
 
         if all(c in chars for c in bigram):
             bigram_freqs[bigram] += int(freq)
@@ -30,7 +37,7 @@ skipgram_freqs = defaultdict(int)
 with open('1-skip.txt') as f:
     for l in f:
         skipgram, freq = l.split('\t')
-        skipgram = skipgram.lower()
+        skipgram = lower(skipgram)
 
         if all(c in chars for c in skipgram):
             skipgram_freqs[skipgram] += int(freq)
