@@ -8,12 +8,12 @@ high_h, high_s, high_l = srgb_to_okhsl(252, 231, 44)
 high_col = (high_h, high_s, high_l*0.97)
 low_col = srgb_to_okhsl(67, 13, 85)
 
-lower_chars = {c1 : c2 for c1, c2 in zip("ETAOINSRHLDCUMFGPYWBVLXJZQ:\"_<>?", "etaoinsrhldcumfgpywbvkxjzq;'-,./")}
+lower_chars = {c1 : c2 for c1, c2 in zip("ETAOINSRHLDCUMFGPYWBVLXJZQ:\"<>?", "etaoinsrhldcumfgpywbvkxjzq;',./")}
 
 def lower(s):
     return "".join([lower_chars[c] if c in lower_chars else c for c in s])
 
-chars = "etaoinsrhldcumfgpywbvkxjzq;'-,./"
+chars = "etaoinsrhldcumfgpywbvkxjzq;',./"
 
 # get bigram freqs
 bigram_freqs = defaultdict(int)
@@ -23,13 +23,9 @@ with open('bigrams.txt') as f:
         bigram, freq = l.split('\t')
         bigram = lower(bigram)
 
-        print(bigram)
-
         if all(c in chars for c in bigram):
             bigram_freqs[bigram] += int(freq)
             bigram_freqs[bigram[1]+bigram[0]] += int(freq)
-
-print(bigram_freqs['-e'])
 
 # get skipgram freqs
 skipgram_freqs = defaultdict(int)
@@ -66,7 +62,7 @@ for target in chars:
     bigram_colors = [get_col(bigram_freqs[l], 0.09) for l in labels]
     skipgram_colors = [get_col(skipgram_freqs[l], -0.09) for l in labels]
 
-    fig, ax = plt.subplots(figsize=(19, 9))
+    fig, ax = plt.subplots(figsize=(22, 9))
     # ax.set_ylim(0, high_scale) # 10**int(log10(high_scale)+0.5)
 
     # Plot each bar type
@@ -91,7 +87,7 @@ for target in chars:
     # skipgram_cbar.ax.set_ylabel('Skipgram Frequency Intensity', fontsize=16)
 
     
-    plt.savefig(f'Graph_Utils/out/{target.upper()}_Skipgram_Bars.png', format='png', dpi=300)
+    plt.savefig(f'Graph_Utils/out/{target.upper()}_Stats.png', format='png', dpi=300)
     # plt.show()
-    print(f"Exported {target.upper()}_Skipgram_Bars.png")
+    print(f"Exported {target.upper()}_Stats.png")
     plt.close()
