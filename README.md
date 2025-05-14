@@ -2,7 +2,7 @@
 
 [![License: AGPL-v3](https://img.shields.io/badge/license-AGPL--v3-blue)](https://github.com/sekaha/DDAKO/blob/main/LICENSE)
 
-DDAKO is a research project that explores the optimization of keyboard layouts using data-driven techniques. By leveraging large-scale empirical typing data, statistical language models, and a custom simulated annealing algorithm, the project aims to design keyboard layouts that enhance typing efficiency and ergonomics.
+DDAKO is a research project that explores the optimization of keyboard layouts using data-driven techniques. By leveraging large-scale empirical typing data, a high-quality web-based English corpus, and a custom simulated annealing algorithm, the project aims to design keyboard layouts that improve predicted typing speed. This is the first step in a more objective creation of keyboard layouts, starting with the speed aspect, future work will delve into ergonomics as they relate to fatigue and hand muscle usage.
 
 **Full Research Paper:** [A Data-Driven Approach to Keyboard Optimization (PDF)](https://github.com/sekaha/DDAKO/blob/main/Data-Driven%20Approach%20to%20Keyboard%20Optimization.pdf)
 **Poster:** [Poster.pdf](https://github.com/sekaha/DDAKO/blob/main/Poster.pdf)
