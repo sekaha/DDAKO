@@ -111,6 +111,7 @@ The core optimization (`simulated_annealing.py`) script uses pre-calculated mode
         *   Understand how the cost function weights were derived.
         *   Re-run the model fitting process (e.g., with different data or parameters).
         *   Perform custom data analysis or visualizations.
+        
         ...then you will need to use the `trigram_model.ipynb` notebook and the associated full dataset.
 
     *   **Data Preparation for `trigram_model.ipynb`:**
