@@ -11,8 +11,7 @@ DDAKO is a research project that explores the optimization of keyboard layouts u
 
 - [Abstract](#abstract)
 - [Overview](#overview)
-- [Key Features](#key-features)
-- [Key Results](#key-results)
+- [Results](#key-results)
 - [Installation](#installation)
 - [Usage](#usage)
 
