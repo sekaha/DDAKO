@@ -22,7 +22,7 @@ The QWERTY layout, first developed in the 1870s for typewriters, is the most wid
 
 ## Overview
 
-Traditional keyboard layouts like QWERTY were not designed with modern typing efficiency or robust ergonomic principles in mind. DDAKO addresses this by:
+Traditional keyboard layouts like QWERTY were not designed with modern typing efficiency or robust ergonomic principles in mind. More modern attempts seldom use robust statistical modeling and instead rely on qualitative observations and personal preference to inform alternative layout creation, DDAKO addresses this by:
 
 -   Analyzing large-scale empirical typing data (136M Keystrokes dataset) and extensive text corpora (iWeb corpus).
 -   Developing a quantitative objective function to predict typing time based on key placement, finger dexterity, and character/n-gram frequency.
