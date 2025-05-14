@@ -31,6 +31,19 @@ Traditional keyboard layouts like QWERTY were not designed with modern typing ef
 
 The project includes Python scripts for the entire pipeline, from data processing to layout optimization and evaluation, as well as LaTeX documents presenting the research findings.
 
+![image](https://github.com/user-attachments/assets/cc4ef547-6cb2-45b2-8a62-887950de3462)
+
+### A Note on the Practicality of the Generated Layout
+
+While this project successfully demonstrates a data-driven approach to keyboard optimization and generates a layout predicted to be faster, it's crucial to understand its context:
+
+The layout presented in the research paper is **foremost a proof of concept, designed to validate the optimization methodology based on a singular, quantifiable metric: typing speed.**
+
+*   **Deliberate Focus:** The decision to optimize solely for typing speed was intentional. Speed offers an objective target, allowing for clearer analysis and a more straightforward foundation for exploring complex optimization problems. This approach makes it easier to reason about and potentially extend the methodology to include other factors in the future.
+*   **Beyond Speed:** Aspects such as long-term comfort, transition effort from existing layouts (like QWERTY), specific ergonomic needs (e.g., minimizing certain finger strains beyond general speed), and overall subjective user preference were not primary objectives for *this specific generated layout*.
+*   **Not a Universal Recommendation:** Therefore, while the generated layout serves as an interesting outcome of the speed optimization, it is **not presented as a universally recommended alternative for everyday typing** without individual consideration and further research into these broader usability aspects.
+
+
 ## Key Features
 
 -   **Empirical Data Analysis**: Processes and analyzes the 136M Keystrokes dataset and iWeb corpus for insights into typing patterns and language statistics.
