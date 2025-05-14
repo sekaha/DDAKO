@@ -31,41 +31,23 @@ Traditional keyboard layouts like QWERTY were not designed with modern typing ef
 
 The project includes Python scripts for the entire pipeline, from data processing to layout optimization and evaluation, as well as LaTeX documents presenting the research findings.
 
-## Key Features
+## Results
 
--   **Empirical Data Analysis**: Processes and analyzes the 136M Keystrokes dataset and iWeb corpus for insights into typing patterns and language statistics.
--   **Sophisticated Cost Function**: A nuanced cost function for bistrokes and tristrokes, fine-tuned with the Levenberg-Marquardt algorithm, considering:
-    -   Positional penalties (columnar and row).
-    -   Frequency penalties (logarithmic).
-    -   Categorical penalties for Alternating Hand (ALT), Single-Hand (SHB), and Single-Finger (SFB) bistrokes.
-    -   Penalties for single-finger skipstrokes in trigrams.
--   **Customizable Simulated Annealing**: Implements simulated annealing with:
-    -   Dynamic initial temperature calculation.
-    -   Probabilistic termination criterion.
-    -   Geometric cooling schedule.
-    -   Ability to optimize for different WPM ranges, languages, or key subsets.
--   **Layout Evaluation**: Assesses generated layouts against existing ones like QWERTY and Dvorak using the derived objective function.
--   **Research Documentation**: Includes LaTeX source for the research paper and poster.
-
-## Key Results
+The layout created in this research project is **foremost a proof of concept, designed to validate the optimization methodology based on a singular, quantifiable metric: typing speed.** This was a deliberate decision as it allows for a clearer analysis and a more straightforward foundation for future exploration. While important, aspects such as long-term comfort, specific ergonomic needs (e.g., minimizing certain finger strains beyond general speed), and overall subjective user preference were not primary objectives for *this specific generated layout*. Therefore, while the generated layout serves as an interesting outcome of the speed optimization, it is **not presented as a universally recommended alternative for everyday typing**.
 
 ![image](https://github.com/user-attachments/assets/cc4ef547-6cb2-45b2-8a62-887950de3462)
 
--   The generated layout is predicted to be **6% faster** for typing English text (iWeb corpus) compared to QWERTY, and 2% faster than Dvorak, when optimized for typists at ≥ 80 WPM.
+- The generated layout is predicted to be **6% faster** for typing English text (iWeb corpus) compared to QWERTY, and 2% faster than Dvorak, when optimized for typists at ≥ 80 WPM.
     -   QWERTY: 54,934,582 seconds ~15,259 hours (predicted time on iWeb corpus)
     -   Dvorak: 52,565,249 seconds ~14,601 hours (4% speedup vs. QWERTY)
     -   DDAKO Layout: 51,429,827 seconds ~14,286 hours (6% speedup vs. QWERTY)
--   **Ergonomic Improvements (Bistroke Categories):**
+- **Ergonomic Improvements (Bistroke Categories):**
     | Layout      | Alternating Hand (ALT) | Single Finger (SFB) |
     | :---------- | :--------------------: | :-----------------: |
     | QWERTY      |         18.3%          |        5.7%         |
     | Dvorak      |         33.6%          |        2.8%         |
     | DDAKO Layout|         33.6%          |        **1.4%**     |
     *(Lower SFB % and higher ALT % are generally better)*
-
-
-It should be noted that the layout presented in the research paper is **foremost a proof of concept, designed to validate the optimization methodology based on a singular, quantifiable metric: typing speed.** Speed offers an objective target, allowing for clearer analysis and a more straightforward foundation for exploring complex optimization problems. This approach makes it easier to reason about and potentially extend the methodology to include other factors in the future. Aspects such as long-term comfort, transition effort from existing layouts (like QWERTY), specific ergonomic needs (e.g., minimizing certain finger strains beyond general speed), and overall subjective user preference were not primary objectives for *this specific generated layout*. Therefore, while the generated layout serves as an interesting outcome of the speed optimization, it is **not presented as a universally recommended alternative for everyday typing** without individual consideration and further research into these broader usability aspects.
-
 
 ## Installation
 
