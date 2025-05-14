@@ -64,15 +64,7 @@ The project includes Python scripts for the entire pipeline, from data processin
     *(Lower SFB % and higher ALT % are generally better)*
 
 
-### A Note on the Practicality of the Generated Layout
-
-While this project successfully demonstrates a data-driven approach to keyboard optimization and generates a layout predicted to be faster, it's crucial to understand its context:
-
-The layout presented in the research paper is **foremost a proof of concept, designed to validate the optimization methodology based on a singular, quantifiable metric: typing speed.**
-
-*   **Deliberate Focus:** The decision to optimize solely for typing speed was intentional. Speed offers an objective target, allowing for clearer analysis and a more straightforward foundation for exploring complex optimization problems. This approach makes it easier to reason about and potentially extend the methodology to include other factors in the future.
-*   **Beyond Speed:** Aspects such as long-term comfort, transition effort from existing layouts (like QWERTY), specific ergonomic needs (e.g., minimizing certain finger strains beyond general speed), and overall subjective user preference were not primary objectives for *this specific generated layout*.
-*   **Not a Universal Recommendation:** Therefore, while the generated layout serves as an interesting outcome of the speed optimization, it is **not presented as a universally recommended alternative for everyday typing** without individual consideration and further research into these broader usability aspects.
+It should be noted that the layout presented in the research paper is **foremost a proof of concept, designed to validate the optimization methodology based on a singular, quantifiable metric: typing speed.** Speed offers an objective target, allowing for clearer analysis and a more straightforward foundation for exploring complex optimization problems. This approach makes it easier to reason about and potentially extend the methodology to include other factors in the future. Aspects such as long-term comfort, transition effort from existing layouts (like QWERTY), specific ergonomic needs (e.g., minimizing certain finger strains beyond general speed), and overall subjective user preference were not primary objectives for *this specific generated layout*. Therefore, while the generated layout serves as an interesting outcome of the speed optimization, it is **not presented as a universally recommended alternative for everyday typing** without individual consideration and further research into these broader usability aspects.
 
 
 ## Installation
